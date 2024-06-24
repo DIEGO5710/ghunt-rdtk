@@ -1,9 +1,29 @@
-# GHunt Research & Development Toolkit
+name = "ghunt"
+version = "2.2.0"
+authors = [
+    {name = "mxrch", email = "mxrch.dev@pm.me"},
+]
+description = "An offensive Google framework."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "AGPL-3.0"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dynamic = ["dependencies"]
+keywords=["osint", "pentest", "cybersecurity", "investigation", "hideandsec", "malfrats"]
 
-Currently, only one module is available : Autoparse.
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
 
-## Autoparse
-It basically takes all the JSON data you put in the `jsons` folder (one JSON structure per file, take an example on `jsons\Cac` (for ClientAuthConfig)), and it will automatically writes Python classes to parse the JSON output into Python objects, with type definition.\
-The auto generated Python files will be wrote in the `generated` folder.
+[project.scripts]
+ghunt = "ghunt.ghunt:main"
 
-PS : It was made to automatically generate Python classes for GHunt's parsers, so it will import and use the parent class `ghunt.objects.apis.Parser` (which auto manages [slots](https://betterprogramming.pub/optimize-your-python-programs-for-free-with-slots-4ff4e1611d9d)) but you can easily edit the script for your needs.
+[tool.setuptools.packages.find]
+include = ["ghunt", "ghunt.*"]
+
+[project.urls]
+"Homepage" = "https://github.com/mxrch/GHunt"
+"Bug Reports" = "https://github.com/mxrch/GHunt/issues"
+"Funding" = "https://github.com/sponsors/mxrch"
+"Source" = "https://github.com/mxrch/GHunt"
